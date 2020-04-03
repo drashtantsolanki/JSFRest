@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <p:commandLink action="addemployee.xhtml" value="Add Employee"/>
+                <p:dataTable value="#{employeeManagedBean.allEmployees}" var="item">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Employee Id" />
+                        </f:facet>
+                        <h:outputText value="#{item.id}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Employee Name" />
+                        </f:facet>
+                        <h:outputText value="#{item.name}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Employee Salary" />
+                        </f:facet>
+                        <h:outputText value="#{item.salary}" />
+                    </p:column>
+
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Employee Department" />
+                        </f:facet>
+                        <h:outputText value="#{item.deptId.departmentName}" />
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="EDIT" />
+                        </f:facet>
+                        <p:commandLink action="#{employeeManagedBean.getEmployee(item.id)}" value="EDIT"/>
+                    </p:column>
+                    
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="DELETE" />
+                        </f:facet>
+                        <p:commandButton action="#{employeeManagedBean.deleteEmployee(item.id)}" value="DELETE"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

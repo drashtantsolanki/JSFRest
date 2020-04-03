@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    
+    <h:body>
+        <f:view>
+            <h:form>
+                <p:panelGrid columns="2">
+                    <h:outputLabel value="Eid" for="eid"/>
+                    <p:inputText id="eid" value="#{employeeManagedBean.eid}" readonly="#{facesContext.renderResponse}" title="eid"/>
+
+                    <h:outputLabel value="Employee name" for="ename"/>
+                    <p:inputText id="ename" value="#{employeeManagedBean.ename}" title="ename" required="true" requiredMessage="Employee Name is Required"/>
+                                        
+                    <h:outputLabel value="Employee Salary" for="esalary"/>
+                    <p:inputText id="esalary" value="#{employeeManagedBean.salary}" title="ename" required="true" requiredMessage="Employee Salary is Required"/>
+                    
+                    <h:outputLabel value="Employee Department" for="did"/>
+                    <h:selectOneMenu id="did" value="#{employeeManagedBean.did}" title="did" required="true" requiredMessage="department is required">
+                        <f:selectItems value="#{employeeManagedBean.dlist}" var="i" itemLabel="#{i.departmentName}" itemValue="#{i.deptId}" />
+                    </h:selectOneMenu>
+                   
+                    
+                    <p:commandButton action="#{employeeManagedBean.addEmployee()}" value="SAVE"/>
+                </p:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

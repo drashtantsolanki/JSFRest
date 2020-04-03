@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns:p="http://primefaces.org/ui"
+    xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <p:commandLink action="addDepartment.xhtml" value="Add Department" />
+                <p:dataTable value="#{departmentManagedBean.allDepartment}" var="key">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Department Id"/>
+                        </f:facet>
+                        <h:outputText value="#{key.deptId}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Department Name"/>
+                        </f:facet>
+                        <h:outputText value="#{key.departmentName}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="EDIT"/>
+                        </f:facet>
+                        <p:commandLink action="#{departmentManagedBean.getDepartment(key.deptId)}" value="EDIT"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+
